@@ -235,4 +235,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         wrapper.orderBy(StrUtil.isNotEmpty(sortField), sortOrder.equals("ascend"), sortField);
         return wrapper;
     }
+
+    @Override
+    public boolean isAdmin(User loginUser) {
+        return loginUser.getUserRole().equals(UserRoleEnum.ADMIN.getValue());
+    }
 }
